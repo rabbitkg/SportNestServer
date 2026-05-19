@@ -32,6 +32,14 @@ async function run() {
     const db = client.db("sportNest")
     const facilityCollection = db.collection("facility")
 
+
+    app.get('/facility', async (req, res) => {
+      const result = await facilityCollection.find().toArray()
+      res.json(result);
+    })
+
+
+
     app.post('/facility', async (req, res) => {
       const facilityData = req.body
       console.log(facilityData)
