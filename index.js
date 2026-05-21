@@ -26,13 +26,13 @@ const client = new MongoClient(uri, {
 
 
 async function run() {
-  try {    
+  try {
     await client.connect();
-    
+
     const db = client.db("sportNest")
     const facilityCollection = db.collection("facility")
     const bookingCollection = db.collection("bookings");
-    
+
 
     app.get('/facility', async (req, res) => {
       const result = await facilityCollection.find().toArray()
@@ -48,7 +48,7 @@ async function run() {
       res.json(result)
     })
 
-     app.get('/facility/:id', async (req, res) => {
+    app.get('/facility/:id', async (req, res) => {
       const { id } = req.params
 
       const result = await facilityCollection.findOne({ _id: new ObjectId(id) })
@@ -56,7 +56,7 @@ async function run() {
       res.json(result)
     })
 
-     app.patch('/facility/:id', async (req, res) => {
+    app.patch('/facility/:id', async (req, res) => {
       const { id } = req.params
       const updateData = req.body
 
@@ -90,6 +90,13 @@ async function run() {
       res.json(result)
     })
 
+    app.get('/booking', async (req, res) => {
+      const { userId } = req.query;
+      const query = userId ? { userId } : {};
+      const result = await bookingCollection.find(query).toArray();
+      res.json(result);
+    });
+
 
     await client.db("admin").command({ ping: 1 });
     console.log("Pinged your deployment. You successfully connected to MongoDB!");
@@ -103,9 +110,9 @@ run().catch(console.dir);
 
 
 app.get('/', (req, res) => {
-    res.send("Server is running fine!")
+  res.send("Server is running fine!")
 })
 
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`)
+  console.log(`Server running on port ${PORT}`)
 })
