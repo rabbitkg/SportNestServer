@@ -31,7 +31,8 @@ async function run() {
     
     const db = client.db("sportNest")
     const facilityCollection = db.collection("facility")
-
+    const bookingCollection = db.collection("bookings");
+    
 
     app.get('/facility', async (req, res) => {
       const result = await facilityCollection.find().toArray()
@@ -73,6 +74,13 @@ async function run() {
       const result = await facilityCollection.deleteOne({ _id: new ObjectId(id) })
 
       res.json(result)
+    })
+
+    app.post('/booking', async (req, res) => {
+      const bookingData = req.body;
+      const result = await bookingCollection.insertOne(bookingData);
+
+      res.json(result);
     })
 
 
