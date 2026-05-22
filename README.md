@@ -80,7 +80,7 @@ BETTER_AUTH_URL=***
 
 ```bash
 # Development (with hot reload)
-npm run dev
+nodemon index.js
 
 # Production
 npm start
@@ -203,7 +203,14 @@ Server runs at `http://localhost:5000`
 
 ## 🤝 Related Repos
 
-- **Frontend (Next.js):** [sportnest-client](https://github.com/your-username/sportnest-client)
+- **Frontend (Next.js):** [sportnest-client](https://github.com/rabbitkg/sport-nest)
+
+---
+## 👤 Author
+
+**Md. Fazle Rabbi**  
+📧 rabbitkgbd@gmail.com  
+🔗 [GitHub](https://github.com/rabbitkg) · [LinkedIn](https://www.linkedin.com/in/md-fazle-rabbi-b335223b0/)
 
 ---
 
