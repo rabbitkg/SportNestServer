@@ -96,9 +96,9 @@ Server runs at `http://localhost:5000`
 
 | Method | Endpoint | Description | Auth |
 |--------|----------|-------------|------|
-| `GET` | `/facilities` | Get all facilities | ❌ |
-| `GET` | `/featured` | Get featured facilities | ❌ |
-| `GET` | `/facilities/:id` | Get single facility | ❌ |
+| `GET` | `/facilities` | Get all facilities | ✅ |
+| `GET` | `/featured` | Get featured facilities | ✅ |
+| `GET` | `/facilities/:id` | Get single facility | ✅ |
 | `POST` | `/facilities` | Create a facility | ✅ |
 | `PUT` | `/facilities/:id` | Update a facility | ✅ Owner |
 | `DELETE` | `/facilities/:id` | Delete a facility | ✅ Owner |
