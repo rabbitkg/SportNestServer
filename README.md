@@ -69,11 +69,11 @@ cp .env.example .env
 Fill in your `.env`:
 
 ```env
-PORT=5000
-MONGODB_URI=mongodb+srv://<user>:<password>@cluster.mongodb.net/sportnest
-CLIENT_URL=http://localhost:3000
-BETTER_AUTH_SECRET=your_secret_key
-BETTER_AUTH_URL=http://localhost:5000
+PORT=***
+MONGODB_URI=mongodb+***
+CLIENT_URL=***
+BETTER_AUTH_SECRET=my_secret_key
+BETTER_AUTH_URL=***
 ```
 
 ### 4. Run the server
