@@ -59,13 +59,13 @@ async function run() {
     const bookingCollection = db.collection("bookings");
 
 
-    app.get('/facility', async (req, res) => {
+    app.get('/facility', verifyToken, async (req, res) => {
       const result = await facilityCollection.find().toArray()
       res.json(result);
     })
 
 
-    app.post('/facility', async (req, res) => {
+    app.post('/facility', verifyToken, async (req, res) => {
       const facilityData = req.body
       console.log(facilityData)
       const result = await facilityCollection.insertOne(facilityData)
@@ -81,7 +81,7 @@ async function run() {
       res.json(result)
     })
 
-    app.patch('/facility/:id', async (req, res) => {
+    app.patch('/facility/:id', verifyToken, async (req, res) => {
       const { id } = req.params
       const updateData = req.body
 
@@ -94,28 +94,28 @@ async function run() {
       res.json(result)
     })
 
-    app.delete('/facility/:id', async (req, res) => {
+    app.delete('/facility/:id', verifyToken, async (req, res) => {
       const { id } = req.params;
       const result = await facilityCollection.deleteOne({ _id: new ObjectId(id) })
 
       res.json(result)
     })
 
-    app.post('/booking', async (req, res) => {
+    app.post('/booking', verifyToken, async (req, res) => {
       const bookingData = req.body;
       const result = await bookingCollection.insertOne(bookingData);
 
       res.json(result);
     })
 
-    app.delete('/booking/:bookingId', async (req, res) => {
+    app.delete('/booking/:bookingId', verifyToken, async (req, res) => {
       const { bookingId } = req.params;
       const result = await bookingCollection.deleteOne({ _id: new ObjectId(bookingId) })
 
       res.json(result)
     })
 
-    app.get('/booking', async (req, res) => {
+    app.get('/booking', verifyToken, async (req, res) => {
       const { userId } = req.query;
       const query = userId ? { userId } : {};
       const result = await bookingCollection.find(query).toArray();
